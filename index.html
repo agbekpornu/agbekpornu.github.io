@@ -3,204 +3,411 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Paul Agbekpornu | Data, Actuarial and Research Analyst</title>
-	<meta name="description" content="Paul Agbekpornu, MFI, MPhil — Research interests, publications, education and teaching." />
+	<title>Paul Agbekpornu | Actuarial Science &amp; Statistics</title>
+	<meta name="description" content="Paul Agbekpornu, MFI, MPhil. Research, publications and teaching in actuarial science, mathematical statistics and data quality." />
+	<meta name="theme-color" content="#13294b" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
+	<script>
+		/* Apply saved theme before the page paints */
+		try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+	</script>
 	<style>
 		:root {
-			--text: #1f2328;
-			--muted: #5b6168;
-			--accent: #1d3b63;
-			--link: #1a56a8;
-			--rule: #d9dde2;
-			--panel: #f5f7f9;
-			--bg: #ffffff;
+			--bg: #fbfaf7;
+			--surface: #ffffff;
+			--text: #17202b;
+			--muted: #5a6573;
+			--line: #e3e1db;
+			--accent: #13294b;
+			--accent-2: #a8552a;
+			--chip: #eef1f5;
+			--shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 8px 24px rgba(16, 24, 40, .06);
 		}
+		@media (prefers-color-scheme: dark) {
+			:root:not([data-theme="light"]) {
+				--bg: #0f141b; --surface: #161d27; --text: #e7ebf0; --muted: #9aa6b4;
+				--line: #263140; --accent: #9dbbe6; --accent-2: #e59a6c; --chip: #1c2533;
+				--shadow: none;
+			}
+		}
+		:root[data-theme="dark"] {
+			--bg: #0f141b; --surface: #161d27; --text: #e7ebf0; --muted: #9aa6b4;
+			--line: #263140; --accent: #9dbbe6; --accent-2: #e59a6c; --chip: #1c2533;
+			--shadow: none;
+		}
+
 		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 		body {
-			margin: 0;
-			background: var(--bg);
-			color: var(--text);
-			font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-			font-size: 16px;
-			line-height: 1.6;
+			margin: 0; background: var(--bg); color: var(--text);
+			font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+			font-size: 16px; line-height: 1.65;
 		}
-		.page { max-width: 880px; margin: 0 auto; padding: 32px 16px 56px; }
-		a { color: var(--link); text-decoration: none; }
+		a { color: var(--accent); text-decoration: none; }
 		a:hover { text-decoration: underline; }
+		.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+		.serif { font-family: "Source Serif 4", Georgia, serif; }
 
-		/* ---------- Profile header ---------- */
-		.profile { display: flex; gap: 28px; align-items: flex-start; }
-		.profile img {
-			width: 200px; height: 240px; object-fit: cover;
-			flex-shrink: 0; border-radius: 4px; background: var(--panel);
+		/* ---------- Header ---------- */
+		header.site {
+			position: sticky; top: 0; z-index: 10;
+			background: color-mix(in srgb, var(--bg) 88%, transparent);
+			backdrop-filter: blur(8px);
+			border-bottom: 1px solid var(--line);
 		}
-		.profile h1 { margin: 0; font-size: 2.1em; line-height: 1.2; color: var(--accent); }
-		.profile .title { margin: 6px 0 18px; font-size: 1.1em; color: var(--muted); }
-
-		.contact-box {
-			background: var(--panel);
-			border-left: 4px solid var(--accent);
-			padding: 14px 18px;
+		.bar { display: flex; align-items: center; gap: 18px; height: 64px; }
+		.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; }
+		.brand:hover { text-decoration: none; }
+		.mono {
+			width: 34px; height: 34px; border-radius: 8px;
+			display: grid; place-items: center;
+			background: var(--accent); color: var(--bg);
+			font-family: "Source Serif 4", Georgia, serif; font-size: 15px; letter-spacing: .5px;
 		}
-		.contact-box h2 { margin: 0 0 8px; font-size: 1em; border: 0; padding: 0; }
-		.contact-box dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; }
-		.contact-box dt { font-weight: 600; color: var(--muted); }
-		.contact-box dd { margin: 0; overflow-wrap: anywhere; }
+		nav.main { margin-left: auto; }
+		nav.main ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; }
+		nav.main a { color: var(--muted); font-size: 14.5px; font-weight: 500; }
+		nav.main a:hover { color: var(--text); text-decoration: none; }
+		.icon-btn {
+			width: 36px; height: 36px; border-radius: 50%;
+			border: 1px solid var(--line); background: var(--surface); color: var(--text);
+			font-size: 16px; cursor: pointer; display: grid; place-items: center;
+		}
+		#menuBtn { display: none; }
 
-		.meta-row { margin: 18px 0 0; }
-		.meta-row strong { display: block; font-size: 0.95em; }
-		.tags { list-style: none; padding: 0; margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
-		.tags li { background: var(--panel); border: 1px solid var(--rule); border-radius: 3px; padding: 2px 10px; font-size: 0.9em; }
+		/* ---------- Hero ---------- */
+		.hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center; padding: 72px 0 56px; }
+		.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 12.5px; font-weight: 600; color: var(--accent-2); margin: 0 0 14px; }
+		.hero h1 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; margin: 0 0 20px; letter-spacing: -.01em; }
+		.hero p.lede { font-size: 1.1rem; color: var(--muted); margin: 0 0 28px; max-width: 58ch; }
+		.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+		.btn { display: inline-block; padding: 10px 18px; border-radius: 999px; font-weight: 500; font-size: 15px; border: 1px solid var(--accent); }
+		.btn.primary { background: var(--accent); color: var(--bg); }
+		.btn.ghost { color: var(--accent); }
+		.btn:hover { text-decoration: none; opacity: .9; }
+		.roles { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: var(--muted); margin: 0; padding: 0; list-style: none; }
+		.roles li { padding-left: 14px; position: relative; }
+		.roles li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); }
+		.portrait { position: relative; justify-self: end; width: 100%; max-width: 340px; }
+		.portrait img, .portrait .ph {
+			width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px;
+			box-shadow: var(--shadow); background: var(--chip); display: block;
+		}
+		.portrait .ph { display: none; place-items: center; font-family: "Source Serif 4", Georgia, serif; font-size: 64px; color: var(--accent); }
+		.portrait::after {
+			content: ""; position: absolute; inset: 14px -14px -14px 14px; z-index: -1;
+			border: 1px solid var(--line); border-radius: 18px;
+		}
 
 		/* ---------- Sections ---------- */
-		h2 {
-			font-size: 1.35em; color: var(--accent);
-			margin: 40px 0 12px; padding-bottom: 6px;
-			border-bottom: 2px solid var(--rule);
+		section.block { padding: 64px 0; border-top: 1px solid var(--line); }
+		.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
+		.sec-head .num { font-size: 13px; color: var(--accent-2); font-weight: 600; letter-spacing: .08em; }
+		.sec-head h2 { font-family: "Source Serif 4", Georgia, serif; font-size: 2rem; font-weight: 600; margin: 0; }
+
+		.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+		.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; box-shadow: var(--shadow); }
+		.card .n { font-family: "Source Serif 4", Georgia, serif; font-size: 1.5rem; color: var(--accent-2); }
+		.card h3 { margin: 6px 0 8px; font-size: 1.08rem; }
+		.card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+		.year-group { display: grid; grid-template-columns: 90px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px dashed var(--line); }
+		.year-group:last-child { border-bottom: 0; }
+		.year { font-family: "Source Serif 4", Georgia, serif; font-size: 1.4rem; color: var(--muted); }
+		.pubs { list-style: none; margin: 0; padding: 0; }
+		.pubs li + li { margin-top: 16px; }
+		.pub-title { font-weight: 600; font-size: 1.02rem; }
+		.pub-meta { color: var(--muted); font-size: 14.5px; }
+		.tag { display: inline-block; font-size: 12px; background: var(--chip); color: var(--muted); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
+		.me { color: var(--text); font-weight: 600; }
+
+		.about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
+		.about p { margin: 0 0 14px; }
+		blockquote {
+			margin: 0; padding: 22px 24px; border-left: 3px solid var(--accent-2);
+			background: var(--surface); border-radius: 0 12px 12px 0;
+			font-family: "Source Serif 4", Georgia, serif; font-size: 1.25rem; line-height: 1.45;
 		}
-		h3 { font-size: 1.05em; margin: 20px 0 4px; }
+		.timeline { list-style: none; margin: 0; padding: 0; }
+		.timeline li { padding: 14px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; }
+		.timeline li:last-child { border-bottom: 0; }
+		.timeline strong { font-weight: 600; }
+		.timeline .where { color: var(--muted); font-size: 14.5px; grid-column: 1 / -1; }
 
-		nav.toc { margin-top: 32px; padding: 12px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-		nav.toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; }
+		.cards.three { grid-template-columns: repeat(3, 1fr); }
+		.proj { display: flex; flex-direction: column; }
+		.proj p { flex: 1; }
+		.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 14px; }
+		.chips span { font-size: 12px; background: var(--chip); color: var(--muted); padding: 2px 9px; border-radius: 999px; }
+		.proj a.more { font-weight: 500; font-size: 14.5px; margin-top: 14px; }
+		.timeline .when { color: var(--muted); font-size: 14px; white-space: nowrap; }
 
-		ol.list { padding-left: 1.4em; }
-		ol.list li { margin-bottom: 14px; }
-		.tools { color: var(--muted); font-style: italic; }
-		.meta { color: var(--muted); }
-		.top { font-size: 0.9em; }
-		footer { margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 0.9em; color: var(--muted); }
+		.two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+		h3.sub { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0 0 10px; }
 
-		@media (max-width: 620px) {
-			.profile { flex-direction: column; }
-			.profile img { width: 160px; height: 192px; }
+		.contact-card { background: var(--accent); color: var(--bg); border-radius: 18px; padding: 36px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: center; }
+		.contact-card h2 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.9rem; margin: 0 0 8px; }
+		.contact-card p { margin: 0; opacity: .85; }
+		.contact-card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 15px; }
+		.contact-card dt { opacity: .7; }
+		.contact-card dd { margin: 0; overflow-wrap: anywhere; }
+		.contact-card a { color: var(--bg); text-decoration: underline; }
+
+		footer.site { padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+		footer .row { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+
+		/* ---------- Mobile ---------- */
+		@media (max-width: 1000px) and (min-width: 861px) { .cards.three { grid-template-columns: 1fr 1fr; } }
+		@media (max-width: 860px) {
+			#menuBtn { display: grid; }
+			nav.main { position: absolute; top: 64px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--line); display: none; }
+			nav.main.open { display: block; }
+			nav.main ul { flex-direction: column; gap: 0; padding: 8px 20px 14px; }
+			nav.main a { display: block; padding: 10px 0; font-size: 16px; }
+			.theme-wrap { margin-left: auto; }
+			.hero, .about, .two, .contact-card { grid-template-columns: 1fr; }
+			.hero { padding-top: 40px; gap: 32px; }
+			.portrait { justify-self: start; max-width: 170px; order: -1; }
+			.cards, .cards.three { grid-template-columns: 1fr; }
+			.year-group { grid-template-columns: 1fr; gap: 6px; }
 		}
 	</style>
 </head>
-<body>
-<div class="page">
+<body id="top">
 
-	<!-- ============ PROFILE HEADER ============ -->
-	<section class="profile" id="top">
-		<!-- Save your photo as images/profile.jpg next to this file -->
-		<img src="images/profile.jpg" alt="Photo of Paul Agbekpornu" />
+	<!-- ============ HEADER ============ -->
+	<header class="site">
+		<div class="wrap bar">
+			<a class="brand" href="#top"><span class="mono">PA</span><span>Paul Agbekpornu</span></a>
+			<nav class="main" id="nav">
+				<ul>
+					<li><a href="#research">Research</a></li>
+					<li><a href="#publications">Publications</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#education">Education</a></li>
+					<li><a href="#employment">Employment</a></li>
+					<li><a href="#teaching">Teaching</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
+			<div class="theme-wrap"><button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode">&#9680;</button></div>
+			<button class="icon-btn" id="menuBtn" aria-label="Open menu">&#9776;</button>
+		</div>
+	</header>
 
-		<div>
-			<h1>Paul Agbekpornu, MFI, MPhil</h1>
-			<p class="title">Data, Actuarial and Research Analyst</p>
+	<main class="wrap">
 
-			<div class="contact-box">
-				<h2>Contact Information:</h2>
-				<dl>
-					<dt>Email</dt>
-					<dd><a href="mailto:Agbekpornupaul2@gmail.com">Agbekpornupaul2@gmail.com</a></dd>
-					<dt>Alumni</dt>
-					<dd><a href="mailto:p.agbekpornu@alumni.utoronto.ca">p.agbekpornu@alumni.utoronto.ca</a></dd>
-					<dt>Phone</dt>
-					<dd>(437) 440-6437</dd>
-					<dt>Location</dt>
-					<dd>Barrie, Ontario, Canada (open to relocating)</dd>
-				</dl>
+		<!-- ============ HERO ============ -->
+		<section class="hero">
+			<div>
+				<p class="eyebrow">Actuarial science &middot; Mathematical statistics &middot; Data quality</p>
+				<h1>Sound data, rigorous models, defensible decisions.</h1>
+				<p class="lede">
+					I am an actuarial and research analyst based in Ontario, Canada. My work connects statistical
+					and actuarial modelling with the quality and governance of the data behind it, from life insurance
+					pricing and IFRS&nbsp;17 liabilities to credit risk and mathematical models of real-world systems.
+				</p>
+				<div class="cta">
+					<a class="btn primary" href="#publications">Explore publications &darr;</a>
+					<a class="btn ghost" href="https://www.researchgate.net/profile/Paul-Agbekpornu/research">ResearchGate &nearr;</a>
+				</div>
+				<ul class="roles">
+					<li>MFI &middot; University of Toronto</li>
+					<li>MPhil, Mathematical Statistics &middot; KNUST</li>
+				</ul>
 			</div>
+			<div class="portrait">
+				<!-- Save your photo as images/profile.jpg next to this file -->
+				<img src="images/pictures.jpeg" alt="Portrait of Paul Agbekpornu"
+				     onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+				<div class="ph" aria-hidden="true">PA</div>
+			</div>
+		</section>
 
-			<div class="meta-row">
-				<strong>Areas</strong>
-				<ul class="tags">
-					<li>Actuarial Science</li>
-					<li>Mathematical Statistics</li>
-					<li>Mathematical Modelling</li>
-					<li>Credit Risk</li>
-					<li>Data Quality &amp; Governance</li>
+		<!-- ============ RESEARCH ============ -->
+		<section class="block" id="research">
+			<div class="sec-head"><span class="num">01</span><h2>Research</h2></div>
+			<div class="cards">
+				<article class="card">
+					<div class="n">01</div>
+					<h3>Data quality and governance</h3>
+					<p>Measuring and assuring completeness, validity, consistency and timeliness of data in regulated banking and insurance environments.</p>
+				</article>
+				<article class="card">
+					<div class="n">02</div>
+					<h3>Actuarial modelling</h3>
+					<p>Life insurance product pricing, cash flow projection and reconciliation, and liability measurement under IFRS&nbsp;17.</p>
+				</article>
+				<article class="card">
+					<div class="n">03</div>
+					<h3>Credit risk</h3>
+					<p>Probability of default modelling, from interpretable logistic regression benchmarks to machine learning alternatives.</p>
+				</article>
+				<article class="card">
+					<div class="n">04</div>
+					<h3>Statistical and mathematical modelling</h3>
+					<p>Generalised linear models, simulation and uncertainty quantification, and differential-equation models of environmental systems.</p>
+				</article>
+			</div>
+		</section>
+
+		<!-- ============ PUBLICATIONS ============ -->
+		<section class="block" id="publications">
+			<div class="sec-head"><span class="num">02</span><h2>Publications</h2></div>
+
+			<div class="year-group">
+				<div class="year">2023</div>
+				<ul class="pubs">
+					<li>
+						<div class="pub-title"><a href="https://www.intechopen.com/chapters/85511">The Risks of Microplastic Pollution in the Aquatic Ecosystem</a><span class="tag">Book chapter</span></div>
+						<div class="pub-meta"><span class="me">Agbekpornu, P.</span> and Kevudo, I. In E.-S. Salama (Ed.), <em>Advances and Challenges in Microplastics</em>. IntechOpen.
+						DOI: <a href="https://doi.org/10.5772/intechopen.108717">10.5772/intechopen.108717</a></div>
+					</li>
 				</ul>
 			</div>
 
-			<div class="meta-row">
-				<strong>Links</strong>
-				<a href="https://www.linkedin.com/in/paul-agbekpornu-8b9909184/">LinkedIn</a> &nbsp;|&nbsp;
-				<a href="https://github.com/randypaul411-collab">GitHub</a> &nbsp;|&nbsp;
-				<a href="https://www.researchgate.net/profile/Paul-Agbekpornu/research">ResearchGate</a> &nbsp;|&nbsp;
-				<a href="resume.pdf">R&eacute;sum&eacute; (PDF)</a>
+			<div class="year-group">
+				<div class="year">2021</div>
+				<ul class="pubs">
+					<li>
+						<div class="pub-title"><a href="https://www.researchgate.net/publication/353715856_Mathematical_Modeling_of_Transmission_of_Water_Pollution">Mathematical Modeling of Transmission of Water Pollution</a><span class="tag">Journal article</span></div>
+						<div class="pub-meta">Bonyah, E., <span class="me">Agbekpornu, P.</span> and Unlu, C. <em>Journal of Prime Research in Mathematics</em>.</div>
+					</li>
+				</ul>
 			</div>
+		</section>
+
+		<!-- ============ PROJECTS ============ -->
+		<section class="block" id="projects">
+			<div class="sec-head"><span class="num">03</span><h2>Selected coding projects</h2></div>
+			<div class="cards three">
+				<article class="card proj">
+					<div class="n">01</div>
+					<h3>Probability of default model</h3>
+					<div class="chips"><span>Python</span><span>scikit-learn</span><span>Credit risk</span></div>
+					<p>A baseline logistic regression and a custom machine learning model for predicting default, benchmarked against a test-set AUROC target above 70%.</p>
+					<a class="more" href="https://github.com/randypaul411-collab/CreditRiskAnalysis-PD-Model/blob/main/PD%20model.ipynb">View code &rarr;</a>
+				</article>
+				<article class="card proj">
+					<div class="n">02</div>
+					<h3>Insurance data quality assessment</h3>
+					<div class="chips"><span>Python</span><span>Great Expectations</span><span>Data governance</span></div>
+					<p>An automated data quality pipeline for a simulated insurance policy and covered-lives dataset, covering four data quality dimensions and producing an executive scorecard.</p>
+					<a class="more" href="https://github.com/randypaul411-collab/Insurance-Data-Quality-Assessment/blob/main/README.md">View code &rarr;</a>
+				</article>
+				<article class="card proj">
+					<div class="n">03</div>
+					<h3>Match outcome prediction with a Poisson GLM</h3>
+					<div class="chips"><span>R</span><span>GLM</span><span>Monte Carlo</span></div>
+					<p>Team attack and defence strengths estimated by maximum likelihood for the EPL 2018/19 season, with Monte Carlo simulation and bootstrap confidence intervals to quantify uncertainty.</p>
+					<a class="more" href="https://github.com/randypaul411-collab/Football-Match-Outcome-Prediction-EPL-2018-19">View code &rarr;</a>
+				</article>
+			</div>
+		</section>
+
+		<!-- ============ EDUCATION ============ -->
+		<section class="block" id="education">
+			<div class="sec-head"><span class="num">04</span><h2>Education</h2></div>
+			<ul class="timeline">
+				<li><strong>Master of Financial Insurance (MFI)</strong><span class="where"><a href="https://www.utoronto.ca/">University of Toronto</a>, Toronto, Canada</span></li>
+				<li><strong>MPhil, Mathematical Statistics</strong><span class="where"><a href="https://www.knust.edu.gh/">Kwame Nkrumah University of Science and Technology (KNUST)</a>, Kumasi, Ghana</span></li>
+			</ul>
+		</section>
+
+		<!-- ============ EMPLOYMENT ============ -->
+		<section class="block" id="employment">
+			<div class="sec-head"><span class="num">05</span><h2>Employment</h2></div>
+			<ul class="timeline">
+				<li><strong>Data Analyst (Co-op)</strong><span class="when">Jun &ndash; Aug 2024</span><span class="where">Prudential Life Insurance Ghana</span></li>
+				<li><strong>Risk Analyst (Co-op)</strong><span class="when">May &ndash; Jun 2024</span><span class="where">Ghana National Petroleum Corporation</span></li>
+				<li><strong>Mathematics Tutor</strong><span class="when">Jan 2022 &ndash; Sep 2023</span><span class="where">StartRite Christian College, Ghana</span></li>
+				<li><strong>Financial Planning Consultant</strong><span class="when">Jul 2020 &ndash; Aug 2021</span><span class="where">Prudential Life Insurance Ghana</span></li>
+			</ul>
+		</section>
+
+		<!-- ============ TEACHING ============ -->
+		<section class="block" id="teaching">
+			<div class="sec-head"><span class="num">06</span><h2>Teaching</h2></div>
+			<div class="two">
+				<div>
+					<h3 class="sub">Secondary school</h3>
+					<p>Taught GCSE Mathematics and General Science at StartRite Christian College, Ghana (2022&ndash;2023), and mathematics at high school and A-level.</p>
+				</div>
+				<div>
+					<h3 class="sub">Areas I can teach</h3>
+					<ul>
+						<li>Probability and mathematical statistics</li>
+						<li>Actuarial mathematics and life contingencies</li>
+						<li>Regression and generalised linear models</li>
+						<li>Data analysis with R, Python and SQL</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ ABOUT ============ -->
+		<section class="block" id="about">
+			<div class="sec-head"><span class="num">07</span><h2>About</h2></div>
+			<div class="about">
+				<div>
+					<p>
+						I began my career in life insurance at Prudential Life Insurance Ghana and taught secondary school
+						mathematics before returning to insurance analytics, where I worked on pricing models, cash flow
+						reconciliation and IFRS&nbsp;17 liabilities.
+					</p>
+					<p>
+						I hold an MPhil in Mathematical Statistics from KNUST and an MFI from the University of Toronto.
+						My current interests sit where actuarial science meets data governance: models are only as reliable
+						as the data that feeds them.
+					</p>
+				</div>
+				<blockquote>Models are only as trustworthy as the data beneath them. Rigour has to start there.</blockquote>
+			</div>
+		</section>
+
+		<!-- ============ CONTACT ============ -->
+		<section class="block" id="contact">
+			<div class="contact-card">
+				<div>
+					<h2>Get in touch</h2>
+					<p>I welcome conversations about research collaboration, graduate study and actuarial or data roles.</p>
+					<p style="margin-top:18px"><a class="btn" style="background:var(--bg);color:var(--accent);border-color:var(--bg);text-decoration:none" href="mailto:Agbekpornupaul2@gmail.com">Email me</a></p>
+				</div>
+				<dl>
+					<dt>Email</dt><dd><a href="mailto:Agbekpornupaul2@gmail.com">Agbekpornupaul2@gmail.com</a></dd>
+					<dt>Alumni</dt><dd><a href="mailto:p.agbekpornu@alumni.utoronto.ca">p.agbekpornu@alumni.utoronto.ca</a></dd>
+					<dt>Location</dt><dd>Barrie, Ontario, Canada</dd>
+					<dt>Profiles</dt><dd><a href="https://www.linkedin.com/in/paul-agbekpornu-8b9909184/">LinkedIn</a> &middot; <a href="https://www.researchgate.net/profile/Paul-Agbekpornu/research">ResearchGate</a></dd>
+				</dl>
+			</div>
+		</section>
+	</main>
+
+	<!-- ============ FOOTER ============ -->
+	<footer class="site">
+		<div class="wrap row">
+			<span>&copy; 2026 Paul Agbekpornu</span>
+			<span><a href="https://www.researchgate.net/profile/Paul-Agbekpornu/research">ResearchGate</a> &middot; <a href="https://www.linkedin.com/in/paul-agbekpornu-8b9909184/">LinkedIn</a> &middot; <a href="#top">Back to top &uarr;</a></span>
 		</div>
-	</section>
-
-	<nav class="toc">
-		<ul>
-			<li><a href="#interests">Research interests</a></li>
-			<li><a href="#publications">Publications</a></li>
-			<li><a href="#education">Education</a></li>
-			<li><a href="#teaching">Teaching</a></li>
-			<li><a href="#experience">Experience</a></li>
-			<li><a href="#skills">Skills</a></li>
-		</ul>
-	</nav>
-
-	<!-- ============ RESEARCH INTERESTS ============ -->
-	<h2 id="interests">Research interests</h2>
-	<ul>
-		<li>Data quality and data governance in regulated banking and insurance environments</li>
-		<li>Actuarial modelling: life insurance pricing, cash flow projection and IFRS 17 liabilities</li>
-		<li>Credit risk modelling, including probability of default</li>
-		<li>Statistical modelling: generalised linear models, simulation and uncertainty quantification</li>
-		<li>Mathematical modelling of environmental systems, including water pollution</li>
-	</ul>
-
-	<!-- ============ PUBLICATIONS ============ -->
-	<h2 id="publications">Publications</h2>
-
-	<h3>Book Chapters</h3>
-	<ol class="list">
-		<li>
-			<strong>Agbekpornu, P.</strong> and Kevudo, I. (2023).
-			<a href="https://www.intechopen.com/chapters/85511">The Risks of Microplastic Pollution in the Aquatic Ecosystem</a>.
-			In E.-S. Salama (Ed.), <em>Advances and Challenges in Microplastics</em>. IntechOpen.
-			<span class="meta">DOI: <a href="https://doi.org/10.5772/intechopen.108717">10.5772/intechopen.108717</a></span>
-		</li>
-	</ol>
-
-	<h3>Journal Articles</h3>
-	<ol class="list" start="2">
-		<li>
-			Bonyah, E., <strong>Agbekpornu, P.</strong> and Unlu, C. (2021).
-			<a href="https://www.researchgate.net/publication/353715856_Mathematical_Modeling_of_Transmission_of_Water_Pollution">Mathematical Modeling of Transmission of Water Pollution</a>.
-			<em>Journal of Prime Research in Mathematics</em>.
-		</li>
-	</ol>
-
-	<p class="meta">Full list on <a href="https://www.researchgate.net/profile/Paul-Agbekpornu/research">ResearchGate</a>.</p>
-
-	<!-- ============ EDUCATION ============ -->
-	<h2 id="education">Education</h2>
-	<ul>
-		<li>Master of Financial Insurance (MFI), <a href="https://www.utoronto.ca/">University of Toronto</a></li>
-		<li>MPhil in Mathematical Statistics, <a href="https://www.knust.edu.gh/">Kwame Nkrumah University of Science and Technology (KNUST)</a></li>
-	</ul>
-
-	<!-- ============ TEACHING ============ -->
-	<h2 id="teaching">Teaching</h2>
-	<p>Taught mathematics at high school and A-level in Ghana before moving into insurance.</p>
-
-	<!-- ============ EXPERIENCE ============ -->
-	<h2 id="experience">Professional experience</h2>
-	<p>
-		<strong>Prudential Life Insurance, Ghana</strong>, actuarial and insurance analytics<br />
-		Built product pricing models, reconciled cash flows and calculated liabilities under IFRS 17.
-	</p>
-	<!-- Add your current role and dates here if you want them on the page. -->
-
-	<!-- ============ SKILLS ============ -->
-	<h2 id="skills">Skills and tools</h2>
-	<ul>
-		<li><strong>Data and analytics:</strong> SQL, Python, R, Excel, SPSS</li>
-		<li><strong>Business intelligence:</strong> Power BI, PowerPoint</li>
-		<li><strong>Data quality:</strong> Great Expectations, data profiling, DQ scorecards</li>
-		<li><strong>Actuarial:</strong> AXIS actuarial modelling, pricing, IFRS 17</li>
-		<li><strong>Focus areas:</strong> financial modelling, insurance analytics, reporting automation, decision support</li>
-	</ul>
-
-	<footer>
-		Last updated: September 2026 &nbsp;|&nbsp; &copy; 2026 Paul Agbekpornu
 	</footer>
 
-</div>
+	<script>
+		// Dark / light toggle
+		document.getElementById("themeBtn").addEventListener("click", function () {
+			var root = document.documentElement;
+			var current = root.getAttribute("data-theme") ||
+				(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+			var next = current === "dark" ? "light" : "dark";
+			root.setAttribute("data-theme", next);
+			try { localStorage.setItem("theme", next); } catch (e) {}
+		});
+		// Mobile menu
+		var nav = document.getElementById("nav");
+		document.getElementById("menuBtn").addEventListener("click", function () { nav.classList.toggle("open"); });
+		nav.addEventListener("click", function (e) { if (e.target.tagName === "A") nav.classList.remove("open"); });
+	</script>
 </body>
 </html>
